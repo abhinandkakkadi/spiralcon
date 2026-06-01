@@ -14,18 +14,14 @@ export interface Service {
 }
 
 
-// TODO: Add application for each services:
 export type ServiceCategory =
   | "Geotechnical"
   | "Environmental"
   | "Survey"
-  | "Monitoring";
+  | "Monitoring"
+  | "Remediation"
+  | "Advisory";
 
-  // corporate-real-estate
-  // sample-collection
-  // geotechnical drilling
-  // environmental drilling
-  // monitoring well service
 
 export const services: Service[] = [
     {
@@ -59,7 +55,7 @@ export const services: Service[] = [
       "Soil sample collection using manual augering for environmental and geotechnical investigations, ensuring accurate sample recovery, minimal site disturbance, and compliance with project specifications and safety requirements.",
     fullDescriptionPara1:
       "At Spiral Constructions, we provide reliable soil sampling services using manual augering techniques for environmental site assessments, contamination investigations, and geotechnical studies. Where surface access is restricted by concrete, asphalt, or paved areas, we first perform core cutting using specialized core cutting equipment to create safe and precise access points. Our trained field teams collect representative soil samples in accordance with project specifications and industry standards, ensuring sample integrity, accurate data collection, and full compliance with health and safety requirements.",
-    heroImage: "/images/services/soil-sampling.webp", // new image
+    heroImage: "/images/services/soil-sampling.webp",
     icon: "Radar",
     applications: [
       "Environmental contamination assessment",
@@ -70,7 +66,7 @@ export const services: Service[] = [
       "Pre-construction soil profiling"
     ],
     featured: false,
-    category: "Environmental",
+    category: "Geotechnical",
   },
   {
     id: "3",
@@ -112,13 +108,6 @@ export const services: Service[] = [
       "Baseline groundwater characterisation",
       "Aquifer pump and slug testing",
     ],
-    equipment: [
-      "HDPE and stainless steel well casing and screens",
-      "Dedicated bladder pumps",
-      "Electronic water level meters",
-      "Portable water quality field meters",
-      "Automated pressure transducers and data loggers",
-    ],
     featured: true,
     category: "Monitoring",
   },
@@ -135,9 +124,9 @@ export const services: Service[] = [
     applications: [
       "Brownfield land regeneration",
       "Industrial site decommissioning",
-      "Petroleum hydrocarbon remediation",
-      "Heavy metals and inorganic contamination",
-      "Chlorinated solvent remediation",
+      "Petroleum hydrocarbon contamination investigations",
+      "Heavy metals and inorganic contamination assessment",
+      "Chlorinated solvent site investigations",
       "Post-remediation validation and regulatory closure",
     ],
     featured: false,
@@ -154,18 +143,18 @@ export const services: Service[] = [
     heroImage: "/images/services/toc.webp",
     icon: "Shield",
     applications: [
-      "Brownfield land regeneration",
-      "Industrial site decommissioning",
-      "Petroleum hydrocarbon remediation",
-      "Heavy metals and inorganic contamination",
-      "Chlorinated solvent remediation",
-      "Post-remediation validation and regulatory closure",
+      "Groundwater level data correction and normalisation",
+      "Multi-well monitoring network setup",
+      "Remediation system performance tracking",
+      "Regulatory compliance reporting",
+      "Groundwater flow direction and gradient analysis",
+      "Long-term environmental monitoring programmes",
     ],
     featured: false,
     category: "Survey",
   },
   {
-    id: "5",
+    id: "7",
     slug: "environmental-site-remediation",
     title: "Environmental Site Remediation and Restoration",
     shortDescription:
@@ -176,19 +165,19 @@ export const services: Service[] = [
     heroImage: "/images/services/remediation.webp",
     icon: "Layers",
     applications: [
-      "Pre-construction site characterisation",
-      "Planning and development applications",
-      "Infrastructure corridor investigations",
-      "Flood risk and drainage assessments",
-      "Retaining wall and basement design",
-      "Insurance and liability assessments",
+      "Contaminated land treatment and clean-up",
+      "Petroleum hydrocarbon source zone remediation",
+      "Chlorinated solvent plume management",
+      "Heavy metals stabilisation and containment",
+      "Landfill and waste site restoration",
+      "Post-remediation validation and site closure",
     ],
     featured: false,
-    category: "Geotechnical",
+    category: "Remediation",
   },
   {
-    id: "7",
-    slug: "remediatin-system",
+    id: "8",
+    slug: "remediation-system",
     title: "Remediation System (Operation & Maintenence)",
     shortDescription:
       "Comprehensive real estate management services, optimizing property potential and maximizing investment value.",
@@ -197,18 +186,18 @@ export const services: Service[] = [
     heroImage: "/images/services/remediation-2.webp",
     icon: "Shield",
     applications: [
-      "Brownfield land regeneration",
-      "Industrial site decommissioning",
-      "Petroleum hydrocarbon remediation",
-      "Heavy metals and inorganic contamination",
-      "Chlorinated solvent remediation",
-      "Post-remediation validation and regulatory closure",
+      "Soil vapour extraction system operation",
+      "Pump and treat groundwater system management",
+      "In-situ chemical oxidation monitoring and maintenance",
+      "Permeable reactive barrier performance tracking",
+      "Air sparging and bioremediation system upkeep",
+      "Long-term remediation performance reporting",
     ],
     featured: false,
-    category: "Environmental",
+    category: "Remediation",
   },
   {
-    id: "7",
+    id: "9",
     slug: "corporate-real-estate",
     title: "Corporate Real Estate",
     shortDescription:
@@ -218,15 +207,15 @@ export const services: Service[] = [
     heroImage: "/images/services/corporate-real-estate.jpg",
     icon: "Shield",
     applications: [
-      "Brownfield land regeneration",
-      "Industrial site decommissioning",
-      "Petroleum hydrocarbon remediation",
-      "Heavy metals and inorganic contamination",
-      "Chlorinated solvent remediation",
-      "Post-remediation validation and regulatory closure",
+      "Commercial property acquisition and disposal",
+      "Portfolio asset management",
+      "Lease advisory and negotiation",
+      "Development and redevelopment consultancy",
+      "Property valuation and due diligence",
+      "Workplace strategy and occupancy planning",
     ],
     featured: false,
-    category: "Environmental",
+    category: "Advisory",
   },
   
 ];
