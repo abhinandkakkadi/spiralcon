@@ -6,7 +6,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about Spiral Constructions — India's leading specialist in geotechnical drilling, environmental site investigation, and ground characterisation services.",
+    "Learn about Spiral Constructions — Leading specialist in geotechnical drilling, environmental site investigation, and ground characterisation services.",
 };
 
 const values = [
@@ -99,7 +99,7 @@ export default function AboutPage() {
             <span className="text-[#0080CC]">Driven by Precision.</span>
           </h1>
           <p className="text-white/70 text-lg max-w-2xl leading-relaxed">
-            For over 15 years, Spiral Constructions has been India&apos;s trusted partner for
+            For over 5 years, Spiral Constructions has been India&apos;s trusted partner for
             geotechnical and environmental ground investigation — delivering the
             subsurface intelligence that engineers, developers, and organisations need
             to make confident decisions.
@@ -127,7 +127,7 @@ export default function AboutPage() {
                 />
                 <div
                   className="absolute inset-0 bg-cover bg-center"
-                  style={{ backgroundImage: "url(/images/team/about-us.jpg)" }}
+                  style={{ backgroundImage: "url(/images/team/about-us.webp)" }}
                 />
               </div>
               <div className="absolute -bottom-4 -right-4 w-full h-full bg-[#E8F4FD] -z-10" />
@@ -151,7 +151,7 @@ export default function AboutPage() {
                 We have enjoyed working with a wide range of clients on a variety of development projects across the whole of the India  adopting a professional, enthusiastic and friendly approach, utilising up-to-the minute technical innovation and always demonstrating great attention to detail.
               </p>
               <p className="text-gray-600 leading-relaxed mb-8">
-                We have completed 25 Ground Investigation, environmental sampling and Soil remediation projects across India.
+                We have completed more than 100 Ground Investigation, environmental sampling and Soil remediation projects across India.
               </p>
               <Link
                 href="/contact"
@@ -165,7 +165,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="py-20 md:py-24 bg-[#F5F7FA]">
+      {/* <section className="py-20 md:py-24 bg-[#F5F7FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -194,10 +194,10 @@ export default function AboutPage() {
             })}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Timeline */}
-      <section className="py-20 md:py-28 bg-white">
+      {/* <section className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14">
             <div>
@@ -238,10 +238,10 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Team */}
-      <section className="py-20 md:py-24 bg-[#F5F7FA]">
+      {/* <section className="py-20 md:py-24 bg-[#F5F7FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-14">
             <div>
@@ -261,7 +261,7 @@ export default function AboutPage() {
               <div key={member.role} className="bg-white group">
                 {/* IMAGE INSTRUCTION: Team photos go in /public/images/team/ */}
                 {/* Use headshots, 400x400px, professional */}
-                <div className="aspect-square bg-[#002B5C] relative overflow-hidden">
+                {/* <div className="aspect-square bg-[#002B5C] relative overflow-hidden">
                   <div
                     className="absolute inset-0 opacity-10"
                     style={{
@@ -284,13 +284,13 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */} 
 
       {/* CTA */}
       <section className="py-16 bg-[#002B5C]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-2xl md:text-3xl font-black text-white mb-4">
-            Ready to Work with Spiralcon?
+            Ready to Work with Spiral Constructions?
           </h2>
           <p className="text-white/70 mb-8 max-w-xl mx-auto">
             Contact our team to discuss your project requirements and how we can support your next investigation programme.

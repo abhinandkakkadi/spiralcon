@@ -1,28 +1,36 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import Link from "next/link";
-import { ArrowRight, MapPin, Search, X } from "lucide-react";
-import { projects, projectCategories, ProjectCategory } from "@/data/projects";
-import { Input } from "@/components/ui/input";
+import React, { useState, useEffect, useCallback } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { projects } from "@/data/projects";
 
 export default function ProjectsPage() {
-  const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState<ProjectCategory | "All">("All");
+  const [current, setCurrent] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  const filtered = useMemo(() => {
-    return projects.filter((p) => {
-      const matchesCategory =
-        activeCategory === "All" || p.category === activeCategory;
-      const matchesSearch =
-        !search ||
-        p.title.toLowerCase().includes(search.toLowerCase()) ||
-        p.location.toLowerCase().includes(search.toLowerCase()) ||
-        p.tags.some((t) => t.toLowerCase().includes(search.toLowerCase())) ||
-        p.shortDescription.toLowerCase().includes(search.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-  }, [search, activeCategory]);
+  const goTo = useCallback(
+    (index: number) => {
+      if (isAnimating) return;
+      setIsAnimating(true);
+      setCurrent((index + projects.length) % projects.length);
+      setTimeout(() => setIsAnimating(false), 400);
+    },
+    [isAnimating]
+  );
+
+  const prev = useCallback(() => goTo(current - 1), [current, goTo]);
+  const next = useCallback(() => goTo(current + 1), [current, goTo]);
+
+  useEffect(() => {
+    const id = setInterval(next, 5000);
+    return () => clearInterval(id);
+  }, [next]);
+
+  const indices = [
+    (current - 1 + projects.length) % projects.length,
+    current,
+    (current + 1) % projects.length,
+  ];
 
   return (
     <div className="pt-[88px]">
@@ -52,154 +60,125 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* Filter bar */}
-      <section className="bg-white border-b border-gray-200 sticky top-[88px] z-30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-            {/* Search */}
-            <div className="relative flex-1 max-w-sm">
-              <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-              <Input
-                placeholder="Search projects..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="pl-9 h-9 text-sm border-gray-200 focus-visible:ring-[#0055A5]"
-              />
-              {search && (
-                <button
-                  onClick={() => setSearch("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-                >
-                  <X size={14} />
-                </button>
-              )}
-            </div>
-
-            {/* Category filters */}
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setActiveCategory("All")}
-                className={`px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors ${
-                  activeCategory === "All"
-                    ? "bg-[#002B5C] text-white"
-                    : "border border-gray-200 text-gray-500 hover:border-[#0055A5] hover:text-[#0055A5]"
-                }`}
-              >
-                All
-              </button>
-              {projectCategories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-1.5 text-xs font-semibold uppercase tracking-wide transition-colors ${
-                    activeCategory === cat
-                      ? "bg-[#002B5C] text-white"
-                      : "border border-gray-200 text-gray-500 hover:border-[#0055A5] hover:text-[#0055A5]"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-
-            {/* Results count */}
-            <span className="text-xs text-gray-400 ml-auto shrink-0">
-              {filtered.length} project{filtered.length !== 1 ? "s" : ""}
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects grid */}
-      <section className="py-12 md:py-16 bg-[#F5F7FA] min-h-[400px]">
+      {/* Slideshow */}
+      <section className="py-16 md:py-24 bg-[#F5F7FA]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {filtered.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-400 text-lg font-medium">No projects found</p>
-              <button
-                onClick={() => { setSearch(""); setActiveCategory("All"); }}
-                className="mt-4 text-[#0055A5] text-sm font-semibold hover:underline"
-              >
-                Clear filters
-              </button>
+          {/* Header row */}
+          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-0.5 bg-[#0055A5]" />
+                <span className="text-[#0055A5] text-sm font-semibold uppercase tracking-widest">
+                  All Projects
+                </span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-black text-[#002B5C] leading-tight">
+                Projects That Define
+                <br />
+                Our Capability
+              </h2>
             </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0.5 bg-gray-200">
-              {filtered.map((project) => (
-                <Link
-                  key={project.id}
-                  href={`/projects/${project.slug}`}
-                  className="group bg-white hover:bg-[#002B5C] transition-all duration-300 flex flex-col"
+            <div className="flex items-center gap-3">
+              <button
+                onClick={prev}
+                className="w-11 h-11 border border-gray-300 flex items-center justify-center hover:border-[#0055A5] hover:text-[#0055A5] transition-colors"
+                aria-label="Previous project"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={next}
+                className="w-11 h-11 border border-gray-300 flex items-center justify-center hover:border-[#0055A5] hover:text-[#0055A5] transition-colors"
+                aria-label="Next project"
+              >
+                <ChevronRight size={20} />
+              </button>
+              <span className="text-sm text-gray-400 ml-2">
+                {current + 1} / {projects.length}
+              </span>
+            </div>
+          </div>
+
+          {/* Cards */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-0.5 bg-gray-200">
+            {indices.map((projectIndex, slot) => {
+              const project = projects[projectIndex];
+              const isActive = slot === 1;
+              return (
+                <div
+                  key={`${projectIndex}-${slot}`}
+                  className="group relative overflow-hidden bg-white"
                 >
                   {/* Image */}
-                  {/* IMAGE INSTRUCTION: Project images go in /public/images/projects/ */}
-                  {/* Filenames match project.heroImage field */}
-                  {/* Recommended: 800x500px landscape */}
-                  <div className="relative h-52 overflow-hidden bg-[#002B5C]">
+                  <div
+                    className={`relative overflow-hidden transition-all duration-500 ${
+                      isActive ? "h-[420px]" : "h-64"
+                    }`}
+                  >
+                    <div className="absolute inset-0 bg-[#002B5C]">
+                      <div
+                        className="absolute inset-0 opacity-10"
+                        style={{
+                          backgroundImage:
+                            "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
+                          backgroundSize: "20px 20px",
+                        }}
+                      />
+                    </div>
                     <div
-                      className="absolute inset-0 opacity-10"
-                      style={{
-                        backgroundImage:
-                          "repeating-linear-gradient(45deg, #fff 0, #fff 1px, transparent 0, transparent 50%)",
-                        backgroundSize: "20px 20px",
-                      }}
-                    />
-                    <div
-                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
+                      className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
                       style={{ backgroundImage: `url(${project.heroImage})` }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#001A4E]/70 to-transparent" />
-
-                    {/* Category badge */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#001A4E]/80 to-transparent" />
                     <div className="absolute top-4 left-4">
-                      <span className="bg-[#0055A5] text-white text-xs font-semibold px-3 py-1 uppercase tracking-wide">
-                        {project.category}
-                      </span>
-                    </div>
-
-                    {/* Year badge */}
-                    <div className="absolute top-4 right-4">
-                      <span className="bg-black/30 text-white/80 text-xs font-medium px-2 py-0.5">
-                        {project.year}
-                      </span>
                     </div>
                   </div>
 
                   {/* Content */}
-                  <div className="p-6 flex flex-col flex-1">
-                    <div className="flex items-center gap-1.5 text-xs text-gray-400 group-hover:text-white/50 mb-3 transition-colors">
-                      <MapPin size={11} />
-                      <span>{project.location}</span>
-                    </div>
-
-                    <h3 className="font-bold text-[#002B5C] group-hover:text-white text-base leading-snug mb-3 transition-colors">
+                  <div
+                    className={`p-6 transition-colors duration-300 ${
+                      isActive ? "bg-[#002B5C]" : "bg-white group-hover:bg-[#002B5C]"
+                    }`}
+                  >
+                    <h3
+                      className={`font-bold text-base leading-snug mb-3 transition-colors ${
+                        isActive
+                          ? "text-white"
+                          : "text-[#002B5C] group-hover:text-white"
+                      }`}
+                    >
                       {project.title}
                     </h3>
-
-                    <p className="text-sm text-gray-500 group-hover:text-white/70 line-clamp-2 leading-relaxed flex-1 transition-colors">
+                    <p
+                      className={`text-sm line-clamp-3 leading-relaxed transition-colors ${
+                        isActive
+                          ? "text-white/70"
+                          : "text-gray-500 group-hover:text-white/70"
+                      }`}
+                    >
                       {project.shortDescription}
                     </p>
-
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-1.5 mt-4">
-                      {project.tags.slice(0, 2).map((tag) => (
-                        <span
-                          key={tag}
-                          className="text-xs text-[#0055A5] group-hover:text-white/60 bg-[#E8F4FD] group-hover:bg-white/10 px-2 py-0.5 font-medium transition-colors"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-
-                    <div className="mt-5 flex items-center gap-1.5 text-[#0055A5] group-hover:text-white text-sm font-semibold transition-colors">
-                      Read more <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                    </div>
                   </div>
-                </Link>
-              ))}
-            </div>
-          )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Dot indicators */}
+          <div className="flex justify-center items-center gap-2 mt-8">
+            {projects.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => goTo(index)}
+                className={`transition-all duration-300 h-1.5 ${
+                  index === current
+                    ? "w-8 bg-[#0055A5]"
+                    : "w-3 bg-gray-300 hover:bg-gray-400"
+                }`}
+                aria-label={`Go to project ${index + 1}`}
+              />
+            ))}
+          </div>
         </div>
       </section>
     </div>

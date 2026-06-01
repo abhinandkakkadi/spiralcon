@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown, Phone, Mail, MapPin } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -75,12 +76,14 @@ export default function Header() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-3 shrink-0">
-              <div
-                className={`w-9 h-9 rounded flex items-center justify-center font-black text-lg ${
-                  scrolled ? "bg-[#002B5C] text-white" : "bg-white text-[#002B5C]"
-                }`}
-              >
-                SC
+              <div className="w-15 h-15 shrink-0 relative">
+                <Image
+                  src="/images/logo/logo.webp"
+                  alt="Spiralcon logo"
+                  fill
+                  className="object-contain"
+                  priority
+                />
               </div>
               <span
                 className={`font-bold text-xl tracking-tight hidden sm:block ${
@@ -181,7 +184,7 @@ export default function Header() {
                 <SheetContent side="right" className="w-full max-w-sm p-0">
                   <div className="bg-[#002B5C] text-white h-full overflow-y-auto">
                     <div className="flex items-center justify-between p-5 border-b border-white/10">
-                      <span className="font-bold text-xl tracking-tight">SPIRALCON</span>
+                      <span className="font-bold text-xl tracking-tight">SPIRAL CONSTRUCTIONS</span>
                       <button onClick={() => setMobileOpen(false)}>
                         <X size={24} />
                       </button>

@@ -2,10 +2,6 @@ export interface Project {
   id: string;
   slug: string;
   title: string;
-  client: string;
-  location: string;
-  year: number;
-  category: ProjectCategory;
   tags: string[];
   shortDescription: string;
   fullDescription: string;
@@ -19,23 +15,12 @@ export interface Project {
   stats?: { label: string; value: string }[];
 }
 
-export type ProjectCategory =
-  | "Geotechnical"
-  | "Environmental"
-  | "Infrastructure"
-  | "Industrial"
-  | "Commercial"
-  | "Residential";
 
 export const projects: Project[] = [
   {
     id: "1",
     slug: "toolbox-meetings",
     title: "Toolbox Meetings", // 
-    client: "Big 4 Companies",
-    location: "Bengaluru, India",
-    year: 2024,
-    category: "Infrastructure", // 
     tags: ["Geotechnical Drilling", "Ground Investigation", "Infrastructure"], // 
     shortDescription:
       "Regular toolbox meetings are conducted before site activities to discuss work plans, identify potential hazards, and reinforce health and safety requirements. These sessions help ensure that all personnel understand their responsibilities, follow safe work practices, and maintain compliance throughout environmental site assessment activities.", // 
@@ -47,9 +32,9 @@ export const projects: Project[] = [
       "We deployed compact, track-mounted rigs suitable for restricted access and deployed pre-drilling utility surveys using GPR. A phased investigation programme was scheduled to minimise traffic disruption, with night-shift working at key locations.",
     outcome:
       "Delivery of a comprehensive factual ground investigation report with borehole logs, laboratory results, and geotechnical parameters, enabling the engineering team to finalise design for tunnels, cut-and-cover sections, and elevated viaducts.",
-    heroImage: "/images/projects/p-1.jpg", // 
+    heroImage: "/images/projects/p-1.webp", // 
     galleryImages: [
-      "/images/projects/metro-rail-2.jpg",
+      "/images/projects/metro-rail-2.webp",
       "/images/projects/metro-rail-3.jpg",
     ],
     services: ["geotechnical-drilling", "gpr-toc-survey", "ground-investigation"],
@@ -65,10 +50,6 @@ export const projects: Project[] = [
     id: "2",
     slug: "gpr-survey",
     title: "Ground Penetrating Radar (GPR) Survey",
-    client: "Leading Petrochemical Manufacturer",
-    location: "Chennai, India",
-    year: 2024,
-    category: "Industrial",
     tags: ["Environmental Drilling", "Contaminated Land", "Industrial"],
     shortDescription:
       "Prior to any intrusive activities, we conduct Ground Penetrating Radar (GPR) surveys and utility detection to identify potential underground utilities and subsurface obstructions. Before mobilization, all GPR equipment and Radiodetection cable locators are checked and verified for proper calibration and performance, ensuring accurate results, improved site safety, and reduced risk during drilling, excavation, and sampling operations.",
@@ -80,7 +61,7 @@ export const projects: Project[] = [
       "We developed a phased investigation strategy in close coordination with the client's HSE team. Dedicated environmental drill rigs with full decontamination procedures were deployed, with stringent waste management protocols for drill arisings and investigation-derived waste.",
     outcome:
       "Comprehensive Phase II ESA report identifying contamination distribution, source zones, and pathways. The findings underpinned a robust remediation strategy enabling the client to proceed with planned redevelopment with regulatory confidence.",
-    heroImage: "/images/projects/p-2.jpg",
+    heroImage: "/images/projects/p-2.webp",
     galleryImages: ["/images/projects/industrial-contamination-2.jpg"],
     services: ["environmental-drilling", "monitoring-well-services"],
     featured: true,
@@ -95,10 +76,6 @@ export const projects: Project[] = [
     id: "3",
     slug: "equipment-decontamination",
     title: "Equipment Decontamination Process", //
-    client: "National Highways Authority",
-    location: "Kerala, India",
-    year: 2023,
-    category: "Infrastructure",
     tags: ["Geotechnical Drilling", "Ground Investigation", "Infrastructure"],
     shortDescription:
       "All sampling and field equipment are thoroughly decontaminated before site activities to prevent cross-contamination and ensure the integrity of environmental data. Our decontamination procedures follow established industry practices, supporting accurate sample collection and maintaining high standards of quality, safety, and environmental compliance throughout site assessment projects.",
@@ -110,7 +87,7 @@ export const projects: Project[] = [
       "We used specialised piston samplers and Swedish weight sounding alongside rotary drilling, deploying lightweight rigs in soft ground areas. Tidal monitoring was incorporated into groundwater data collection.",
     outcome:
       "Detailed geotechnical report with soil profiles, consolidation parameters, and geotechnical design recommendations, enabling efficient highway design with targeted ground improvement only where required.",
-    heroImage: "/images/projects/p-3.jpg",
+    heroImage: "/images/projects/p-3.webp",
     galleryImages: ["/images/projects/coastal-highway-2.jpg"],
     services: ["geotechnical-drilling", "ground-investigation"],
     featured: true,
@@ -125,10 +102,6 @@ export const projects: Project[] = [
     id: "4",
     slug: "core-cutting-services-mumbai",
     title: "Core Cutting/Concrete Breaking Services",
-    client: "Confidential Developer",
-    location: "Mumbai, India",
-    year: 2023,
-    category: "Commercial",
     tags: ["Environmental Drilling", "Contaminated Land", "Monitoring Wells"],
     shortDescription:
       "We provide core cutting services to create safe and precise access points through concrete, asphalt, and paved surfaces prior to soil sampling activities. This enables efficient environmental site assessments while minimizing site disturbance and supporting accurate sample collection in accordance with project requirements.",
@@ -140,7 +113,7 @@ export const projects: Project[] = [
       "A carefully phased investigation programme worked around demolition activities. We used window sampling and dynamic probing alongside rotary drilling to maximise coverage with minimal footprint, supplemented by GPR to identify buried structures before drilling.",
     outcome:
       "Regulatory approval obtained for a risk-based remediation strategy combining targeted soil excavation and long-term groundwater monitoring, enabling project proceeds on schedule.",
-    heroImage: "/images/projects/p-4.jpg",
+    heroImage: "/images/projects/p-4.webp",
     galleryImages: ["/images/projects/brownfield-mumbai-2.jpg"],
     services: ["environmental-drilling", "gpr-toc-survey", "contaminated-land-remediation"],
     featured: false,
@@ -154,10 +127,6 @@ export const projects: Project[] = [
     id: "5",
     slug: "soil-sample-collection-manual-augering",
     title: "Soil Sample Collection by Manual Augering",
-    client: "Renewable Energy Developer",
-    location: "Rajasthan, India",
-    year: 2024,
-    category: "Commercial",
     tags: ["Geotechnical Drilling", "Ground Investigation"],
     shortDescription:
       "We collect soil samples using manual augering techniques for environmental site assessments and geotechnical investigations. This method enables efficient sample recovery with minimal site disturbance, ensuring representative samples are obtained in accordance with project specifications and quality requirements.",
@@ -169,7 +138,7 @@ export const projects: Project[] = [
       "We mobilised multiple drill rigs simultaneously with a phased logistics plan, establishing a site camp and fuel depot to maintain continuous operations. A pre-agreed data management protocol allowed real-time reporting.",
     outcome:
       "Complete geotechnical dataset delivered on programme, enabling the structural engineer to finalise pile designs and optimise foundation costs across the site.",
-    heroImage: "/images/projects/p-5.jpg",
+    heroImage: "/images/projects/p-5.webp",
     galleryImages: [],
     services: ["geotechnical-drilling", "ground-investigation"],
     featured: false,
@@ -184,10 +153,6 @@ export const projects: Project[] = [
     id: "6",
     slug: "monitoring-well-installation",
     title: "Monitoring Well Installation",
-    client: "Municipal Corporation",
-    location: "Pune, India",
-    year: 2022,
-    category: "Environmental",
     tags: ["Monitoring Wells", "Environmental", "Ground Investigation"],
     shortDescription:
       "We provide monitoring well installation services using site-specific drilling methods selected to suit local geology, ground conditions, and project requirements. Our experienced field teams ensure proper well construction and development to support accurate groundwater monitoring, sampling, and long-term environmental assessment programs.",
@@ -199,7 +164,7 @@ export const projects: Project[] = [
       "Hydrogeological conceptual model development informed an optimised monitoring network design. Multi-level monitoring wells were installed in key receptor locations, with automated water level loggers to provide continuous hydraulic head data.",
     outcome:
       "Operational monitoring programme delivering quarterly sampling data and annual compliance reports to the municipal corporation and regulatory authority, with a clean compliance record maintained throughout the programme.",
-    heroImage: "/images/projects/p-6.jpg",
+    heroImage: "/images/projects/p-6.webp",
     galleryImages: [],
     services: ["monitoring-well-services", "environmental-drilling"],
     featured: false,
@@ -213,10 +178,6 @@ export const projects: Project[] = [
     id: "7",
     slug: "monitoring-well-development",
     title: "Monitoring Well Development",
-    client: "Airport Authority of India",
-    location: "Hyderabad, India",
-    year: 2023,
-    category: "Infrastructure",
     tags: ["Geotechnical Drilling", "Ground Investigation", "Infrastructure"],
     shortDescription:
       "We carry out monitoring well development using appropriately sized screen and plain casing pipes, followed by the placement of filter gravel and bentonite seals. The borehole is then properly sealed to prevent surface contamination and ensure the integrity of groundwater monitoring and sampling activities throughout the project lifecycle.",
@@ -228,7 +189,7 @@ export const projects: Project[] = [
       "We worked closely with the airport's engineering and security teams to plan a safe investigation programme with phased access. All personnel underwent full security vetting and airside inductions. Low-profile drilling equipment was used to maintain safety clearances within the operational aerodrome.",
     outcome:
       "Full geotechnical data package delivered on programme, supporting structural design of the new terminal and pavement design for extended taxiways.",
-    heroImage: "/images/projects/p-7.jpg",
+    heroImage: "/images/projects/p-7.webp",
     galleryImages: [],
     services: ["geotechnical-drilling", "ground-investigation"],
     featured: false,
@@ -242,10 +203,6 @@ export const projects: Project[] = [
     id: "8",
     slug: "well-flushing",
     title: "Well Flushing",
-    client: "Bruhat Bengaluru Mahanagara Palike",
-    location: "Bengaluru, India",
-    year: 2024,
-    category: "Infrastructure",
     tags: ["GPR Survey", "Utility Mapping", "Infrastructure"],
     shortDescription:
       "We perform well air lifting to remove fine sediments, drilling residues, and stagnant water from newly installed monitoring wells. These activities help improve well performance, stabilize groundwater conditions, and ensure reliable groundwater sampling and monitoring results for environmental site assessment projects.",
@@ -257,7 +214,7 @@ export const projects: Project[] = [
       "We deployed multiple GPR units simultaneously with rolling traffic management arrangements, covering the survey area in a systematic grid. Multi-frequency antennas were used to optimise detection across a range of depths and utility types.",
     outcome:
       "Comprehensive subsurface utility map delivered in GIS format, enabling the municipality to plan infrastructure works with significantly reduced risk of utility strikes and improved project efficiency.",
-    heroImage: "/images/projects/p-8.jpeg",
+    heroImage: "/images/projects/p-8.webp",
     galleryImages: [],
     services: ["gpr-toc-survey"],
     featured: false,
@@ -271,10 +228,6 @@ export const projects: Project[] = [
     id: "9",
     slug: "groundwater-purging-bailer",
     title: "Groundwater Purging with Bailer",
-    client: "Archaeological Survey of India",
-    location: "Delhi, India",
-    year: 2022,
-    category: "Commercial",
     tags: ["Geotechnical Drilling", "GPR Survey", "Heritage"],
     shortDescription:
       "Prior to groundwater sampling, we perform well purging using bailers to remove stagnant water and ensure that samples are representative of actual groundwater conditions. This process supports accurate environmental assessment results and helps maintain compliance with established sampling protocols and quality requirements.",
@@ -286,7 +239,7 @@ export const projects: Project[] = [
       "GPR was used as the primary investigation tool, providing a detailed picture of the subsurface without excavation. Where intrusive investigation was required, we used a small-diameter core drilling rig operable in very restricted spaces, with all works supervised by an archaeological monitor.",
     outcome:
       "Detailed investigation report combining GPR interpretation and borehole data, providing ASI with the foundation information required to plan conservation works without risk to the heritage asset.",
-    heroImage: "/images/projects/p-9.jpg",
+    heroImage: "/images/projects/p-9.webp",
     galleryImages: [],
     services: ["gpr-toc-survey", "geotechnical-drilling"],
     featured: false,
@@ -300,10 +253,6 @@ export const projects: Project[] = [
     id: "10",
     slug: "dam-safety-investigation",
     title: "Groundwater Sample Collection",
-    client: "State Water Resources Department",
-    location: "Maharashtra, India",
-    year: 2023,
-    category: "Infrastructure",
     tags: ["Geotechnical Drilling", "Ground Investigation", "Water Resources"],
     shortDescription:
       "We collect groundwater samples from monitoring wells and borewells using manual bailers, following established environmental sampling procedures. This method ensures representative sample collection while maintaining sample integrity for accurate laboratory analysis and environmental site assessment.",
@@ -315,7 +264,7 @@ export const projects: Project[] = [
       "All drilling through the embankment was conducted using specialist grouting procedures to seal boreholes on completion, preventing seepage pathways. A detailed method statement was approved by the dam safety engineer before works commenced.",
     outcome:
       "Comprehensive dam safety investigation report submitted to the regulatory authority, providing the data required for stability analysis and informing a programme of targeted remediation to extend the operational life of the dam.",
-    heroImage: "/images/projects/p-10.jpg",
+    heroImage: "/images/projects/p-10.webp",
     galleryImages: [],
     services: ["geotechnical-drilling", "monitoring-well-services", "ground-investigation"],
     featured: false,
@@ -335,19 +284,3 @@ export function getFeaturedProjects(): Project[] {
   return projects.filter((p) => p.featured);
 }
 
-export function getProjectsByCategory(category: ProjectCategory): Project[] {
-  return projects.filter((p) => p.category === category);
-}
-
-export function getProjectCategories(): ProjectCategory[] {
-  return [...new Set(projects.map((p) => p.category))];
-}
-
-export const projectCategories: ProjectCategory[] = [
-  "Geotechnical",
-  "Environmental",
-  "Infrastructure",
-  "Industrial",
-  "Commercial",
-  "Residential",
-];

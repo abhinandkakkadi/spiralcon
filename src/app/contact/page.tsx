@@ -5,7 +5,7 @@ import { Phone, Mail, MapPin, Clock, ArrowRight, CheckCircle2 } from "lucide-rea
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectSeparator, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { services } from "@/data/services";
 
 const offices = [
@@ -34,6 +34,8 @@ const offices = [
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
   const [form, setForm] = useState({
     name: "",
     company: "",
@@ -43,11 +45,23 @@ export default function ContactPage() {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: Integrate with your email/CRM provider (e.g. Resend, Formspree, HubSpot)
-    console.log("Form submitted:", form);
-    setSubmitted(true);
+    setSubmitting(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed to send");
+      setSubmitted(true);
+    } catch {
+      setError("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -70,7 +84,7 @@ export default function ContactPage() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Contact Spiralcon
+            Contact Spiral Constructions
           </h1>
           <p className="text-white/70 text-lg max-w-xl leading-relaxed">
             Whether you have a specific project requirement or want to discuss how we
@@ -135,7 +149,7 @@ export default function ContactPage() {
                   <CheckCircle2 size={40} className="text-[#0055A5] mx-auto mb-4" />
                   <h3 className="font-bold text-[#002B5C] text-lg mb-2">Message Received!</h3>
                   <p className="text-gray-600 text-sm">
-                    Thank you for contacting Spiralcon. Our team will be in touch within 1 business day.
+                    Thank you for contacting Spiral Constructions. Our team will be in touch within 1 business day.
                   </p>
                   <button
                     onClick={() => { setSubmitted(false); setForm({ name: "", company: "", email: "", phone: "", service: "", message: "" }); }}
@@ -212,16 +226,19 @@ export default function ContactPage() {
                       value={form.service}
                       onValueChange={(v) => setForm({ ...form, service: v ?? "" })}
                     >
-                      <SelectTrigger className="border-gray-200 focus:ring-[#0055A5] h-11">
+                      <SelectTrigger className="w-full border-gray-200 focus:ring-[#0055A5] h-11">
                         <SelectValue placeholder="Select a service..." />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent align="start" className="min-w-(--anchor-width)">
                         {services.map((s) => (
-                          <SelectItem key={s.slug} value={s.slug}>
+                          <SelectItem key={s.slug} value={s.slug} className="py-2.5 pl-3 pr-10 text-sm cursor-pointer">
                             {s.title}
                           </SelectItem>
                         ))}
-                        <SelectItem value="other">Other / Not sure</SelectItem>
+                        <SelectSeparator />
+                        <SelectItem value="other" className="py-2.5 pl-3 pr-10 text-sm cursor-pointer text-muted-foreground">
+                          Other / Not sure
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -241,11 +258,16 @@ export default function ContactPage() {
                     />
                   </div>
 
+                  {error && (
+                    <p className="text-sm text-red-600 text-center">{error}</p>
+                  )}
+
                   <button
                     type="submit"
-                    className="w-full bg-[#0055A5] hover:bg-[#002B5C] text-white font-semibold py-3.5 flex items-center justify-center gap-2 transition-colors"
+                    disabled={submitting}
+                    className="w-full bg-[#0055A5] hover:bg-[#002B5C] disabled:opacity-60 disabled:cursor-not-allowed text-white font-semibold py-3.5 flex items-center justify-center gap-2 transition-colors"
                   >
-                    Send Enquiry <ArrowRight size={16} />
+                    {submitting ? "Sending…" : <><span>Send Enquiry</span><ArrowRight size={16} /></>}
                   </button>
 
                   <p className="text-xs text-gray-400 text-center">
@@ -264,7 +286,7 @@ export default function ContactPage() {
                 <div className="flex items-start gap-3 p-5 bg-[#F5F7FA]">
                   <MapPin size={18} className="text-[#0055A5] mt-0.5 shrink-0" />
                   <div>
-                    <p className="font-semibold text-[#002B5C] text-sm">Spiral Construction Pvt. Ltd.</p>
+                    <p className="font-semibold text-[#002B5C] text-sm">Spiral Constructions Pvt. Ltd.</p>
                     <p className="text-gray-500 text-sm mt-1 leading-relaxed">
                       Pattuvam, kannur, Kerala- 670143<br />
                       Dwarka, New Delhi - 110075<br />
@@ -309,7 +331,7 @@ export default function ContactPage() {
       {/* Map placeholder */}
       {/* IMAGE/MAP INSTRUCTION: Replace this section with an embedded Google Maps iframe */}
       {/* Go to maps.google.com → search your address → Share → Embed a map → copy iframe */}
-      <section className="bg-[#E8F4FD] h-72 flex items-center justify-center">
+      {/* <section className="bg-[#E8F4FD] h-72 flex items-center justify-center">
         <div className="text-center">
           <MapPin size={32} className="text-[#0055A5] mx-auto mb-3" />
           <p className="text-[#0055A5] font-semibold">Map Placeholder</p>
@@ -317,7 +339,7 @@ export default function ContactPage() {
             Replace with Google Maps embed for Bengaluru HQ
           </p>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

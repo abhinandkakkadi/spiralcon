@@ -8,22 +8,22 @@ const slides = [
   {
     id: 1,
     // IMAGE INSTRUCTION: Add a high-res site investigation / drilling image here
-    // File location: /public/images/hero/hero-1.jpg
+    // File location: /public/images/hero/hero-1.webp
     // Recommended: 1920x1080px, landscape, showing drilling rig in the field
-    image: "/images/hero/hero-2b.jpg",
+    image: "/images/hero/hero-1.webp",
     label: "Geotechnical Excellence",
     title: "Work For Environment Sustainability",
     subtitle:
-      "We support some of India's leading environmental consultancies in executing site work while adhering to the highest health, safety, and environmental (HSE) standards. With a zero-tolerance approach to safety violations, we are committed to ensuring safe, compliant, and incident-free operations at every project site.",
+      "We support some of world's leading environmental consultancies in executing site work while adhering to the highest health, safety, and environmental (HSE) standards. With a zero-tolerance approach to safety violations, we are committed to ensuring safe, compliant, and incident-free operations at every project site.",
     cta: { label: "Explore Services", href: "/services" },
     ctaSecondary: { label: "Our Projects", href: "/projects" },
   },
   {
     id: 2,
     // IMAGE INSTRUCTION: Add an environmental investigation / sampling image here
-    // File location: /public/images/hero/hero-2.jpg
+    // File location: /public/images/hero/hero-2.webp
     // Recommended: 1920x1080px, showing environmental sampling or monitoring wells
-    image: "/images/hero/hero-2c.jpg",
+    image: "/images/hero/hero-2.webp",
     label: "Environmental Solutions",
     title: "Protecting Land & Water for Future Generations",
     subtitle:
@@ -34,9 +34,9 @@ const slides = [
   {
     id: 3,
     // IMAGE INSTRUCTION: Add a large infrastructure / urban project image here
-    // File location: /public/images/hero/hero-3.jpg
+    // File location: /public/images/hero/hero-3.webp
     // Recommended: 1920x1080px, showing large-scale infrastructure (metro, highway, airport)
-    image: "/images/hero/hero-3.jpg",
+    image: "/images/hero/hero-3.webp",
     label: "Infrastructure Expertise",
     title: "Committed to Safety Excellence",
     subtitle:
@@ -69,7 +69,7 @@ export default function HeroSlider() {
   }, [current, goTo]);
 
   useEffect(() => {
-    const interval = setInterval(next, 6000);
+    const interval = setInterval(next, 12000);
     return () => clearInterval(interval);
   }, [next]);
 

@@ -6,9 +6,7 @@ import { services } from "@/data/services";
 const quickLinks = [
   { label: "About Us", href: "/about" },
   { label: "Our Projects", href: "/projects" },
-  { label: "Our Clients", href: "/clients" },
   { label: "Contact Us", href: "/contact" },
-  { label: "Careers", href: "/careers" },
 ];
 
 export default function Footer() {
@@ -43,10 +41,10 @@ export default function Footer() {
               <div className="w-9 h-9 bg-white rounded flex items-center justify-center font-black text-lg text-[#002B5C]">
                 SC
               </div>
-              <span className="font-bold text-xl tracking-tight">SPIRALCON</span>
+              <span className="font-bold text-xl tracking-tight">SPIRAL CONSTRUCTIONS</span>
             </div>
             <p className="text-white/60 text-sm leading-relaxed mb-6">
-              India&apos;s trusted specialists in geotechnical drilling, environmental
+              Trusted specialists in geotechnical drilling, environmental
               investigation, and ground characterisation — delivering precision
               subsurface solutions for complex projects.
             </p>
@@ -163,7 +161,7 @@ export default function Footer() {
                 Offices
               </p>
               <div className="flex flex-wrap gap-2">
-                {["Bengaluru", "Mumbai", "Chennai", "Delhi"].map((city) => (
+                {["Chennai", "Delhi", "Kannur"].map((city) => (
                   <span
                     key={city}
                     className="text-xs text-white/60 border border-white/10 px-2 py-1"

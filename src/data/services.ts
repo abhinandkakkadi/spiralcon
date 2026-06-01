@@ -19,7 +19,6 @@ export type ServiceCategory =
   | "Geotechnical"
   | "Environmental"
   | "Survey"
-  | "Geo-Environmental"
   | "Monitoring";
 
   // corporate-real-estate
@@ -37,7 +36,7 @@ export const services: Service[] = [
       "We provide Ground Penetrating Radar (GPR) surveys and subsurface clearance services to identify underground utilities, structures, and potential obstructions before intrusive works. Our surveys help improve site safety, reduce project risks, and support informed decision-making for environmental investigations and remediation activities.",
     fullDescriptionPara1:
       "Spiral constructions offer subsurface investigations using Ground Penetrating Radar survey (GPR Survey) is a non-destructive technique to produce a cross section profile of subsurface without any drilling, trenching or ground disturbances. The profiles are used for detecting buried utilities, such as, pipes, cables, etc in totally non-destructive manner. Additionally, subject to requirements, we also use Cable & Pipe Locators, and for precise definition of locations, we use DGPS and Electronic Total Stations.",
-    heroImage: "/images/services/gpr.jpg",
+    heroImage: "/images/services/gpr.webp",
     icon: "Radar",
     applications: [
       "Pre-drilling utility clearance",
@@ -60,23 +59,29 @@ export const services: Service[] = [
       "Soil sample collection using manual augering for environmental and geotechnical investigations, ensuring accurate sample recovery, minimal site disturbance, and compliance with project specifications and safety requirements.",
     fullDescriptionPara1:
       "At Spiral Constructions, we provide reliable soil sampling services using manual augering techniques for environmental site assessments, contamination investigations, and geotechnical studies. Where surface access is restricted by concrete, asphalt, or paved areas, we first perform core cutting using specialized core cutting equipment to create safe and precise access points. Our trained field teams collect representative soil samples in accordance with project specifications and industry standards, ensuring sample integrity, accurate data collection, and full compliance with health and safety requirements.",
-    heroImage: "/images/services/soil-sampling.jpg", // new image
+    heroImage: "/images/services/soil-sampling.webp", // new image
     icon: "Radar",
     applications: [
+      "Environmental contamination assessment",
+      "Geotechnical site investigation",
+      "Agricultural soil sampling",
+      "Groundwater monitoring well installation",
+      "Landfill and waste site characterisation",
+      "Pre-construction soil profiling"
     ],
     featured: false,
-    category: "Geo-Environmental",
+    category: "Environmental",
   },
   {
     id: "3",
-    slug: "geo-environmental-drilling",
-    title: "Geo-Environmental Drilling",
+    slug: "environmental-drilling",
+    title: "Environmental Drilling",
     shortDescription:
       "Targeted drilling programs for environmental site assessments, contamination investigations, and soil/groundwater sampling across industrial and brownfield sites.",
     fullDescriptionPara1:
       "Environmental drilling is a way to investigate and delineate subsurface conditions and monitor them over time. The data collected may be used to identify areas of soil or groundwater contamination, log water table depths, or monitor and confirm the efficacy of remediation efforts. It’s important to choose the right drilling technology and sampling techniques based on the expected geologic conditions.",
       fullDescriptionPara2: " We have extensive experience in well installation, development, rehabilitation, abandonment, and groundwater monitoring installations. With our diverse drilling fleet and experienced crews, even the most difficult conditions can be overcome. Spiral also offers conventional and advanced drilling technologies. Our fleet includes track and truck mounted equipment and limited access rigs for tight spaces, low overhead conditions, and over-water work allowing us to access almost any drill site.",
-    heroImage: "/images/services/environmental-drilling.jpg",
+    heroImage: "/images/services/environmental-drilling.webp",
     icon: "Leaf",
     applications: [
       "Brownfield land assessment and redevelopment",
@@ -86,15 +91,8 @@ export const services: Service[] = [
       "Regulatory compliance investigations",
       "Contamination source zone delineation",
     ],
-    equipment: [
-      "Dedicated environmental drill rigs",
-      "Peristaltic and bladder pumps for groundwater sampling",
-      "Multi-parameter water quality meters",
-      "PID and FID meters for VOC screening",
-      "Stainless steel and PTFE sampling equipment",
-    ],
     featured: true,
-    category: "Geo-Environmental",
+    category: "Environmental",
   },
   {
     id: "4",
@@ -104,7 +102,7 @@ export const services: Service[] = [
       "Design, installation, development, and long-term sampling of groundwater monitoring wells for environmental compliance and contamination tracking.",
     fullDescriptionPara1:
       "Spiral constructions specializes in the installation and development of monitoring, pumping, injection or extraction wells, soil and groundwater sampling equipment and the installation of remediation systems.",
-    heroImage: "/images/services/monitoring-well-service.jpeg",
+    heroImage: "/images/services/monitoring-well-service.webp",
     icon: "Activity",
     applications: [
       "Long-term groundwater quality monitoring",
@@ -132,7 +130,7 @@ export const services: Service[] = [
       "Comprehensive environmental sample collection services, ensuring accurate and reliable data for your projects.",
     fullDescriptionPara1:
       "Spiral Constructions Get results you can trust. Our experts understand the importance of accurate samples regardless of geologic conditions. Whether it’s discrete or representative sampling you’re after, Cascade has the tools and technologies to get it. Soil, rock and even the most difficult ground conditions are no match for our experienced crews.",
-    heroImage: "/images/services/sample-collection.jpg",
+    heroImage: "/images/services/sample-collection.webp",
     icon: "Shield",
     applications: [
       "Brownfield land regeneration",
@@ -153,7 +151,7 @@ export const services: Service[] = [
       "Top of Casing (TOC) Survey services provide precise elevation measurements of well casings, delivering accurate reference data for groundwater monitoring, environmental assessments, and regulatory compliance projects.",
     fullDescriptionPara1:
       "Spiral Constructions offers accurate Top of Casing (TOC) survey, which is an essential to determine groundwater flow direction. Time for the TOC survey is included in the monitoring well installation. The TOC survey should be standardized to measure the elevation of the top of the well on the NORTH side of each well casing. It may be appropriate to put a mark or small notch in the casing to indicate where the casing elevation was measured, thereby ensuring that depth-to-water measurements (measured to a hundredth of a meter) are consistent and accurate.",
-    heroImage: "/images/services/toc.png",
+    heroImage: "/images/services/toc.webp",
     icon: "Shield",
     applications: [
       "Brownfield land regeneration",
@@ -175,7 +173,7 @@ export const services: Service[] = [
     fullDescriptionPara1:
       "We have extensive experience in supporting environmental consultants across India for soil and groundwater contaminated sites with absestos, heavy metals, petroleum hydrocarbons (TPH), polyaromatics (PAH), solvents, pesticides, industrial chemicals.",
       fullDescriptionPara2: "Each contaminated land remediation project is different. Every client has their own objectives, specifications, financial constraints and build programs to meet. Spiral understand this. That’s why we make the effort from the outset to appreciate your needs as an organization. We listen to your objectives for the project and tailor our offer to make sure we deliver to your specifications, as a committed member of your project delivery team. Brownfield sites, which are any previously developed land that are not currently in use due to the potential presence of contaminated or hazardous material, tend to be an environmental and economic burden to national and local authorities.",
-    heroImage: "/images/services/remediation.jpg",
+    heroImage: "/images/services/remediation.webp",
     icon: "Layers",
     applications: [
       "Pre-construction site characterisation",
@@ -196,7 +194,7 @@ export const services: Service[] = [
       "Comprehensive real estate management services, optimizing property potential and maximizing investment value.",
     fullDescriptionPara1:
       "Our Real Estate Management Services offer integrated facilities management, portfolio management, property management and financial management of your real estate assets. The team is made up of exceptional advisors who will assist you in tackling the dynamic needs of your property to optimize its potential and maximize your profits. Equipped in operational efficiencies, cost optimization and risk mitigation, we use enhanced platforms to deliver market leading services to our clients. We ensure our clients are provided with a future-oriented growth strategy that enables operational efficiency and an improved investment value. We are currently operating for corporate and retail real estate across south India.",
-    heroImage: "/images/services/remediation-2.jpg",
+    heroImage: "/images/services/remediation-2.webp",
     icon: "Shield",
     applications: [
       "Brownfield land regeneration",

@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     template: "%s | Spiralcon",
   },
   description:
-    "India's trusted specialists in geotechnical drilling, environmental site investigation, monitoring wells, and GPR surveys. Delivering precision subsurface solutions for complex infrastructure and environmental projects.",
+    "Trusted specialists in geotechnical drilling, environmental site investigation, monitoring wells, and GPR surveys. Delivering precision subsurface solutions for complex infrastructure and environmental projects.",
   keywords: [
     "geotechnical drilling",
     "environmental drilling",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     siteName: "Spiralcon",
     title: "Spiralcon — Precision Ground Investigation & Environmental Services",
     description:
-      "India's trusted specialists in geotechnical drilling, environmental site investigation, monitoring wells, and GPR surveys.",
+      "Trusted specialists in geotechnical drilling, environmental site investigation, monitoring wells, and GPR surveys.",
   },
   twitter: {
     card: "summary_large_image",
@@ -57,6 +57,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        <link rel="preload" as="image" href="/images/hero/hero-1.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/images/hero/hero-2.webp" type="image/webp" />
+        <link rel="preload" as="image" href="/images/hero/hero-3.webp" type="image/webp" />
+      </head>
       <body className="antialiased">
         <Header />
         <main>{children}</main>

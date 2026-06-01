@@ -4,7 +4,6 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, MapPin, ChevronLeft, ChevronRight } from "lucide-react";
 import { getFeaturedProjects } from "@/data/projects";
-import { Badge } from "@/components/ui/badge";
 
 const featured = getFeaturedProjects();
 
@@ -61,21 +60,16 @@ export default function FeaturedProjects() {
           {featured.map((project, index) => {
             const isActive = index === current;
             return (
-              <Link
+              <div
                 key={project.id}
-                href={`/projects/${project.slug}`}
-                className={`group relative overflow-hidden transition-all duration-500 ${
-                  isActive ? "lg:col-span-1" : ""
-                }`}
+                className="group relative overflow-hidden transition-all duration-500"
               >
-                {/* Image placeholder */}
+                {/* Image */}
                 <div
                   className={`relative overflow-hidden transition-all duration-500 ${
                     isActive ? "h-80" : "h-64"
                   }`}
                 >
-                  {/* Placeholder bg — replace with actual image */}
-                  {/* IMAGE INSTRUCTION: Project images go in /public/images/projects/ */}
                   <div
                     className={`absolute inset-0 transition-all duration-500 ${
                       isActive ? "bg-[#002B5C]" : "bg-[#003F80]"
@@ -90,18 +84,14 @@ export default function FeaturedProjects() {
                       }}
                     />
                   </div>
-                  {/* Image (will show when file exists) */}
                   <div
                     className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
                     style={{ backgroundImage: `url(${project.heroImage})` }}
                   />
-                  {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#001A4E]/80 to-transparent" />
-
-                  {/* Badge */}
                   <div className="absolute top-4 left-4">
                     <span className="bg-[#0055A5] text-white text-xs font-semibold px-3 py-1 uppercase tracking-wide">
-                      {project.category}
+                      {project.tags[0]}
                     </span>
                   </div>
                 </div>
@@ -110,9 +100,7 @@ export default function FeaturedProjects() {
                 <div className="bg-white p-6 group-hover:bg-[#002B5C] transition-colors duration-300">
                   <div className="flex items-center gap-1.5 text-xs text-gray-400 group-hover:text-white/50 mb-3 transition-colors">
                     <MapPin size={11} />
-                    <span>{project.location}</span>
                     <span className="mx-1">·</span>
-                    <span>{project.year}</span>
                   </div>
                   <h3 className="font-bold text-[#002B5C] group-hover:text-white text-base leading-snug mb-3 transition-colors">
                     {project.title}
@@ -120,11 +108,8 @@ export default function FeaturedProjects() {
                   <p className="text-sm text-gray-500 group-hover:text-white/70 line-clamp-2 transition-colors">
                     {project.shortDescription}
                   </p>
-                  <div className="mt-4 flex items-center gap-1.5 text-[#0055A5] group-hover:text-white text-sm font-semibold transition-colors">
-                    Read more <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-                  </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>

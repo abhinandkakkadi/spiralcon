@@ -235,9 +235,6 @@ export default async function ServiceDetailPage({ params }: Props) {
                     <div className="absolute inset-0 bg-gradient-to-t from-[#001A4E]/60 to-transparent" />
                   </div>
                   <div className="p-5">
-                    <span className="text-xs text-[#0055A5] group-hover:text-[#0080CC] font-semibold uppercase tracking-wide transition-colors">
-                      {project.location} · {project.year}
-                    </span>
                     <h3 className="font-bold text-[#002B5C] group-hover:text-white text-sm mt-1.5 mb-2 transition-colors">
                       {project.title}
                     </h3>
