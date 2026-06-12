@@ -75,10 +75,10 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 shrink-0">
-              <div className="w-15 h-15 shrink-0 relative">
+            <Link href="/" className="flex items-center gap-2 shrink-0">
+              <div className="w-13 h-13 shrink-0 relative">
                 <Image
-                  src="/images/logo/logo.webp"
+                  src="/images/logo/logo_png.png"
                   alt="Spiralcon logo"
                   fill
                   className="object-contain"
